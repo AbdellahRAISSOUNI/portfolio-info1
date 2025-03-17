@@ -1,16 +1,19 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary: #3b82f6;
-  --secondary: #10b981;
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --card: #171717;
-  --card-foreground: #f3f4f6;
-  --border: #262626;
-  --input: #262626;
-  --accent: #10b981;
+@layer base {
+  :root {
+    --primary: #3b82f6;
+    --secondary: #10b981;
+    --background: #0a0a0a;
+    --foreground: #ffffff;
+    --card: #171717;
+    --card-foreground: #f3f4f6;
+    --border: #262626;
+    --input: #262626;
+    --accent: #10b981;
+  }
 }
 
 @layer base {
@@ -19,26 +22,39 @@
   }
 }
 
-@layer utilities {
-  .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-[#3b82f6] to-[#10b981] text-white font-medium rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#3b82f6]/20 hover:-translate-y-1;
-  }
-  
+@layer components {
   .section-padding {
-    @apply py-20 md:py-28;
+    @apply py-20 px-4 sm:px-6 lg:px-8;
   }
   
   .heading {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+    @apply text-4xl sm:text-5xl font-bold mb-4;
   }
   
   .subheading {
-    @apply text-xl md:text-2xl text-gray-300 mt-4;
+    @apply text-lg text-gray-400 mb-8;
   }
   
   .card {
-    @apply bg-[#171717] rounded-xl p-6 border border-[#262626] transition-all duration-300 hover:border-[#3b82f6]/50;
+    @apply bg-[#171717]/50 rounded-xl p-8 border border-[#262626];
   }
+  
+  .btn-primary {
+    @apply px-8 py-4 bg-gradient-to-r from-[#3b82f6] to-[#10b981] text-white font-medium rounded-lg transition-all duration-300 hover:shadow-[0_5px_15px_rgba(59,130,246,0.4)];
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px #3b82f6;
+  }
+  to {
+    box-shadow: 0 0 40px #3b82f6;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
 /* Custom animations */
@@ -55,18 +71,5 @@
   }
   100% {
     transform: translateY(0px);
-  }
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 10px -10px #3b82f6;
-  }
-  to {
-    box-shadow: 0 0 20px 5px #3b82f6;
   }
 }
