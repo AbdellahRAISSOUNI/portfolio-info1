@@ -1,26 +1,72 @@
 @import "tailwindcss";
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #3b82f6;
+  --secondary: #10b981;
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card: #171717;
+  --card-foreground: #f3f4f6;
+  --border: #262626;
+  --input: #262626;
+  --accent: #10b981;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-[#0a0a0a] text-white font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-[#3b82f6] to-[#10b981] text-white font-medium rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#3b82f6]/20 hover:-translate-y-1;
+  }
+  
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+  
+  .heading {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+  
+  .subheading {
+    @apply text-xl md:text-2xl text-gray-300 mt-4;
+  }
+  
+  .card {
+    @apply bg-[#171717] rounded-xl p-6 border border-[#262626] transition-all duration-300 hover:border-[#3b82f6]/50;
+  }
+}
+
+/* Custom animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -10px #3b82f6;
+  }
+  to {
+    box-shadow: 0 0 20px 5px #3b82f6;
+  }
 }
