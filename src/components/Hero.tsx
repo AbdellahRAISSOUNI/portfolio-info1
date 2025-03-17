@@ -188,10 +188,14 @@ export default function Hero() {
                 }}
                 className="relative w-full h-full rounded-full border-2 border-white/10 overflow-hidden bg-[#171717] transform-gpu perspective-1000"
               >
-                {/* Placeholder instead of image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-6xl">AR</span>
-                </div>
+                {/* Profile image */}
+                <Image
+                  src="/creator.jpeg"
+                  alt="Abdellah Raissouni"
+                  fill
+                  className="object-cover"
+                  priority
+                />
                 
                 {/* Reflective overlay */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none"></div>
